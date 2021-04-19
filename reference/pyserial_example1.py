@@ -1,3 +1,4 @@
+# Program reference: https://swf.com.tw/?p=1188
 import serial
 from time import sleep
 import sys
