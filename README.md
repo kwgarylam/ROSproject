@@ -10,6 +10,13 @@ https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-
 
 # YouTube Links:
 Example:
+
+1.Raspberry Pi to Arduino Communication
+https://www.youtube.com/watch?v=me7mhrRbspk
+
+2. Lane Detection
+https://www.youtube.com/watch?v=aXqoPiMPhDw&list=PLMoSUbG1Q_r_wT0Ac7rOlhlwq9VsZDA0b
+
 https://www.youtube.com/watch?v=Xr0_vScJD8o
 
 https://www.youtube.com/watch?v=BBwEF6WBUQs
