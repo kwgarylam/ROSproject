@@ -11,10 +11,10 @@ https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-
 # YouTube Links:
 Example:
 
-1. Raspberry Pi to Arduino Communication /n
+1. Raspberry Pi to Arduino Communication <br>
 https://www.youtube.com/watch?v=me7mhrRbspk
 
-2. Lane Detection /n
+2. Lane Detection <br>
 https://www.youtube.com/watch?v=aXqoPiMPhDw&list=PLMoSUbG1Q_r_wT0Ac7rOlhlwq9VsZDA0b
 
 https://www.youtube.com/watch?v=Xr0_vScJD8o
