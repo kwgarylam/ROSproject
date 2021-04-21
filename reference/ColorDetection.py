@@ -1,4 +1,5 @@
 # Python code for Multiple Color Detection
+# Ref: https://www.geeksforgeeks.org/multiple-color-detection-in-real-time-using-python-opencv/
 
 import numpy as np
 import cv2
