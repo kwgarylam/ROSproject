@@ -1,5 +1,7 @@
 # Python code for Multiple Color Detection
 # Ref: https://www.geeksforgeeks.org/multiple-color-detection-in-real-time-using-python-opencv/
+# HSV Ref: https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html
+# https://stackoverflow.com/questions/47483951/how-to-define-a-threshold-value-to-detect-only-green-colour-objects-in-an-image/47483966#47483966
 
 import numpy as np
 import cv2
