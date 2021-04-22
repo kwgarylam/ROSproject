@@ -2,6 +2,14 @@
 
 # References list:
 
+Self Driving Car with Lane Detection using Raspberry Pi <br>
+https://www.youtube.com/watch?v=aXqoPiMPhDw&list=PLMoSUbG1Q_r_wT0Ac7rOlhlwq9VsZDA0b <br>
+
+OpenCV Raspberry Pi Self Driving Car using Neural Networks <br>
+https://www.youtube.com/watch?v=_wi2L-KrGqk <br>
+https://www.youtube.com/watch?v=57SODsvC9PU <br>
+https://www.youtube.com/watch?v=qa2wyaC7-ok <br>
+
 https://www.electronicshub.org/arduino-line-follower-robot/
 
 https://roboticsbackend.com/raspberry-pi-arduino-serial-communication/
