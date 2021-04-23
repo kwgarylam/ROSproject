@@ -11,82 +11,108 @@ time_spacing = 30
 time = 1200
 time_rollOver = 1440
 day = 1
+timeTick = 0
 
 # Scaling Factor
 A = 32
 
 # List to store the car objects
 cars = []
+writeData = []
+data = []
+mytime = []
 
 
 class Car:
-    def __init__(self, name, power, duration):
+    def __init__(self, name, power, carCreate, carDuration, charging):
         self.name = name
         self.power = power
-        self.duration = duration
+        self.carCreate = carCreate
+        self.carDuration = carDuration
+        self.charging = charging
 
-    def details(self):
-        return self.name, self.power, self.duration
 
-
-def powerCorrection(t):
-    return c * A * math.exp(-t / tau)
-
+def powerCorrection(t, A):
+    power = c * A * math.exp(-t / tau)
+    if power <= 0.001:
+        power = 0
+    return power
 
 def time_format(mytime):
     h = math.floor(np.mod(mytime / 60, 24))
     m = math.ceil((np.mod(mytime / 60, 24) % 1) * 60)
     return h, m
 
-
-def basic_arrange():
-    # Do something
-    pass
+def basic_arrange(carNum):
+    if carNum <= 4:
+        A = 32
+    elif 5 <= carNum <= 8:
+        A = 20
+    elif 9 <= carNum <= 12:
+        A = 15
+    elif 13 <= carNum <= 15:
+        A = 10
+    elif carNum >= 16:
+        A = 5
+    return A
 
 
 with open('output.csv', 'a', newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(['time', 'car', 'power'])
-
-    # car1 = Car('car1', '1234')
-    # car2 = Car('car2', '2222')
-
-    # cars.append(car1)
-    # cars.append(car2)
-
-    # for car in cars:
-    #     print(car.name, car.power, sep=' ')
+    writer = csv.writer(csvfile, dialect='excel')
+    writer.writerow(['time', 'cars'])
 
     i = 0
     while day <= 2:
+        # 8am-8pm
         if 0 <= time <= 480 or 1200 <= time < 1440:
             ##### Do something #####
             # Main function
-
-            print("Doing")
-            print("Time now: ")
             hh, mm = time_format(time)
+            print("Day ", day, "Doing")
+            print("Time now: ", str(hh) + ':' + str(mm))
 
-            carPower = powerCorrection(duration)
-
-            cars.append(Car('car' + str(i), carPower, duration))
-            writer.writerow([str(hh) + ':' + str(mm), cars[i].name, cars[i].power])
-            duration = duration + time_spacing
-
+            # Create new objects. There are two cars enter for every cycle
+            cars.append(Car('car' + str(i), 0, timeTick, 0, "Charge"))
+            i = i + 1
+            cars.append(Car('car' + str(i), 0, timeTick, 0, "Charge"))
             i = i + 1
 
-            time = time + time_spacing
-
-            # sleep(0.1)
 
         else:
             # The system is idle
-            print("Waiting")
-            print("Time now: ")
-            time_format(time)
-            time = time + time_spacing
-            # sleep(0.1)
+            hh, mm = time_format(time)
+            print("Day ", day, "Waiting")
+            print("Time now: ", str(hh) + ':' + str(mm))
 
         if time > time_rollOver:
-            time = time_spacing
+            print("Next day")
+            time = 0
             day = day + 1
+
+        ######## Update the value ##########
+        # Write the car power information into csv format
+        data.append(str(hh) + ':' + str(mm))
+
+        #print("Charge Num: ", sum(c.charging == "Charge" for c in cars))
+
+        for car in cars:
+            carNum = sum(c.charging == "Charge" for c in cars)
+
+            A = basic_arrange(carNum)
+            car.carDuration = timeTick - car.carCreate
+            car.power = powerCorrection(car.carDuration, A)
+
+            if car.power == 0:
+                car.charging = "Completed"
+                carNum = sum(c.charging == "Charge" for c in cars)
+
+            data.append(str(car.charging))
+        writer.writerow(data)
+
+        # Reset the information write to the csv file of every row
+        data = []
+
+        time = time + time_spacing
+        timeTick = timeTick + time_spacing
+
+print("Program completed...")
