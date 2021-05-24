@@ -40,7 +40,7 @@ Learning notes for ROS and AGV
 |13|[INTRODUCTION TO SELF DRIVING CAR USING JETSON NANO][y13]||
 
 
-Reference Documents
+Reference
 
 |#|Content|Remark|
 |---|----|-----|
