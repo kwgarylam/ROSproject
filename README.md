@@ -22,7 +22,7 @@ Learning notes for ROS and AGV
   ```
 
 
-### Reference Youtube
+## Reference Youtube
 |#|Content|Remark|
 |---|----|-----|
 |1|[Self Driving Car with Lane Detection using Raspberry Pi][y1]||
@@ -50,7 +50,7 @@ Learning notes for ROS and AGV
 
 
 
-
+[//]: # (Links for reference youtube)
 [y1]: https://www.youtube.com/watch?v=aXqoPiMPhDw&list=PLMoSUbG1Q_r_wT0Ac7rOlhlwq9VsZDA0b
 [y2]: https://www.youtube.com/watch?v=_wi2L-KrGqk
 [y3]: https://www.youtube.com/watch?v=57SODsvC9PU
@@ -65,9 +65,8 @@ Learning notes for ROS and AGV
 [y12]: https://www.youtube.com/watch?v=_wi2L-KrGqk
 [y13]: https://www.youtube.com/watch?v=syphzPxnozA
 
-
+[//]: # (Links for reference documents)
 [d1]: https://www.electronicshub.org/arduino-line-follower-robot/
 [d2]: https://roboticsbackend.com/raspberry-pi-arduino-serial-communication/
 [d3]: https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/
 [d4]: https://github.com/papiot/lane-detection-python
-
