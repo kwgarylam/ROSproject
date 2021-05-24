@@ -1,16 +1,31 @@
 # README
 Learning notes for ROS and AGV
 
-***
+****
 |Author | Gary Lam  |
 |Date   | May, 2021 |
-***
+****
 
 ## Table of content
 * [References](#References)
-* [YouTube Links](#References)
+* [YouTube Links](#YouTube Links)
 
+### Code
+#### Type code here
+  print("Hello world")
+  
+  ```
+  print("Hello world")
+  ```
 
+  ```python
+  print("Hello world")
+  ```
+  
+```python
+print("Hello world")
+```
+  
 # References list:
 
 Self Driving Car with Lane Detection using Raspberry Pi <br>
