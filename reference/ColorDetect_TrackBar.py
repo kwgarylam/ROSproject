@@ -35,17 +35,19 @@ while True:
     s_max = cv2.getTrackbarPos("Sat Max", "HSV")
     v_min = cv2.getTrackbarPos("Value Min", "HSV")
     v_max = cv2.getTrackbarPos("Value Max", "HSV")
-    #print(h_min)
 
     lower = np.array([h_min, s_min, v_min])
     upper = np.array([h_max, s_max, v_max])
     mask = cv2.inRange(imgHSV, lower, upper)
+    mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
     result = cv2.bitwise_and(img, img, mask = mask)
 
-    cv2.imshow('Original', img)
+    #cv2.imshow('Original', img)
     #cv2.imshow('HSV Color Space', imgHSV)
-    cv2.imshow('Mask', mask)
-    cv2.imshow('Result', result)
+    #cv2.imshow('Mask', mask)
+    #cv2.imshow('Result', result)
+
+    hstack = np.hstack([img, mask, result])
 
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
