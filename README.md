@@ -1,4 +1,12 @@
-# ROSproject
+# Learning notes for ROS and AGV
+===========================
+Learning documents and handout for ROS and AGV related projects
+
+****
+|Author | Gary Lam  |
+|Date   | May, 2021 |
+****
+
 
 # References list:
 
