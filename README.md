@@ -1,6 +1,6 @@
-# Learning notes for ROS and AGV
-===========================
-Learning documents and handout for ROS and AGV related projects
+# README
+===
+Learning notes for ROS and AGV
 
 ****
 |Author | Gary Lam  |
