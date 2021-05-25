@@ -9,6 +9,4 @@ pip install opencv-python
 pip install numpy
 ```
 
-
-Main is changed
-Confict resolved.
+Main is changed again
