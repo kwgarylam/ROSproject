@@ -8,6 +8,7 @@
  move(speed,turn,delay)
 -Speed and turn range from -1 to 1
 -Delay is in seconds.
+Ref: https://www.youtube.com/watch?v=0lXY87NwVIc
 '''
 
 import RPi.GPIO as GPIO
