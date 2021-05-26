@@ -23,6 +23,6 @@ pwmA.start(0)
 ###
 pwmA.ChangeDutyCycle(60)
 GPIO.output(In1A,GPIO.LOW)
-GPIO.output(In1A,GPIO.HIGH)
+GPIO.output(In1B,GPIO.HIGH)
 sleep(2)
 pwmA.ChangeDutyCycle(0)
