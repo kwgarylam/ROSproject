@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-frameWidth = 640
-frameHeight = 480
+frameWidth = 320
+frameHeight = 240
 
 cap = cv2.VideoCapture(0)
 cap.set(3, frameWidth)
@@ -10,12 +10,13 @@ cap.set(4, frameHeight)
 
 print("Program started")
 
+#Callback function when the track bar is sliding
 def empty(a):
     pass
 
 # Track Bar to calibrate the parameters
 cv2.namedWindow("HSV")
-cv2.resizeWindow("HSV", 640, 240)
+cv2.resizeWindow("HSV", 640, 320)
 cv2.createTrackbar("Hue Min", "HSV", 0, 179, empty)
 cv2.createTrackbar("Hue Max", "HSV", 179, 179, empty)
 cv2.createTrackbar("Sat Min", "HSV", 0, 255, empty)
@@ -39,8 +40,10 @@ while True:
     lower = np.array([h_min, s_min, v_min])
     upper = np.array([h_max, s_max, v_max])
     mask = cv2.inRange(imgHSV, lower, upper)
-    mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
+
     result = cv2.bitwise_and(img, img, mask = mask)
+
+    mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2RGB)
 
     #cv2.imshow('Original', img)
     #cv2.imshow('HSV Color Space', imgHSV)
@@ -48,7 +51,7 @@ while True:
     #cv2.imshow('Result', result)
 
     hstack = np.hstack([img, mask, result])
-
+    cv2.imshow('HStack', hstack)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
