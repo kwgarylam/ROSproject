@@ -4,7 +4,7 @@ import numpy as np
 frameWidth = 320
 frameHeight = 240
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('v2.mp4')
 cap.set(3, frameWidth)
 cap.set(4, frameHeight)
 
@@ -24,7 +24,20 @@ cv2.createTrackbar("Sat Max", "HSV", 255, 255, empty)
 cv2.createTrackbar("Value Min", "HSV", 0, 255, empty)
 cv2.createTrackbar("Value Max", "HSV", 255, 255, empty)
 
+### For video only ###
+frameCounter = 1
+######################
+
 while True:
+
+    ### For video only ###
+    frameCounter += 1
+    print(frameCounter)
+    if cap.get(cv2.CAP_PROP_FRAME_COUNT) == frameCounter:
+        print("In")
+        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+        frameCounter = 1
+    ######################
 
     _, img = cap.read()
     imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -48,10 +61,10 @@ while True:
     #cv2.imshow('Original', img)
     #cv2.imshow('HSV Color Space', imgHSV)
     #cv2.imshow('Mask', mask)
-    #cv2.imshow('Result', result)
+    cv2.imshow('Result', result)
 
-    hstack = np.hstack([img, mask, result])
-    cv2.imshow('HStack', hstack)
+    #hstack = np.hstack([img, mask, result])
+    #cv2.imshow('HStack', hstack)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
