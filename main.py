@@ -1,14 +1,26 @@
 #from MotorModule import Motor
 import KeyPressModule as kp
 import cv2
-
+import colorDetectionModule as color
+import laneDetectionModule as lane
+import myUtlis
 ######################################
 #motor = Motor(2, 3, 4, 17, 22, 27)
 ######################################
 
 cap = cv2.VideoCapture(0)
+# Parameters        ###############################
+initialTrackBarVals = [50, 60, 0, 240]
+frameWidth = 480
+frameHeight = 340
+curveList = []
+avgValLength = 10
+###################################################
+# Initialization    ###############################
+myUtlis.initializeTrackbars(initialTrackBarVals, frameWidth, frameHeight)
 kp.init()
 waiting = True
+trafficSignColor = ""
 
 def getImg(display = False, size = [480,340]):
 
@@ -26,26 +38,33 @@ def getImg(display = False, size = [480,340]):
 # If red light: stay; green light: start
 # Input: VideoFrame
 # Output: float speed
-def getTrafficLight(img):
+def getTrafficLight(img, display=True):
 
     global waiting
+    global trafficSignColor
+
     # Stage 1.1
     # Color Detection Method ###########
     # Check the Color in the Region of Interest (ROI)
     # Input: VideoFrame
     # Output: String trafficColor, "Red" or "Green"
+    trafficImageFrame, trafficSignColor = color.getTrafficColor(img)
 
-
+    if display:
+        cv2.imshow('Traffic Light', trafficImageFrame)
 
     ####################################
 
     # Stage 1.2
     # If the traffic light return is green, start running the robot
-    traffic = "green"
-    if traffic == "green":
-        waiting = False
-    #pass
+    #trafficSignColor = "green"
 
+    if trafficSignColor == "green":
+        waiting = False
+
+    #print(trafficSignColor)
+
+    return trafficImageFrame, trafficSignColor
 # After stage 1, the robot start to move.
 def run(img):
 ###############################################
@@ -58,6 +77,8 @@ def run(img):
     # Return a value for turning
     # Input: Video Frame
     # Output: Lane Curve
+    curve = lane.getLaneCurve(img, display=2)
+    print(curve)
 
 
     # Stage 3:
@@ -82,9 +103,10 @@ if __name__ == '__main__':
         myframe = getImg(display=True)
 
         if waiting:
-            getTrafficLight(myframe)
+            getTrafficLight(myframe, display=True)
         else:
             run(myframe)
+
 
         # Press 'q' to quite the program
         if cv2.waitKey(1) == ord('q'):
